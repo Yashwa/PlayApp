@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">OyePlay</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_clublist">ClublistActivity</string>
+    <string name="title_activity_filter">FilterActivity</string>
+
+    <string-array name="spinner_distance">
+        <item>0-25 km</item>
+        <item>25-50 km</item>
+        <item>50-75 km</item>
+        <item>75-100 km</item>
+        <item>Above 100 km</item>
+    </string-array>
+
+    <string-array name="spinner_typeOfSport">
+        <item>Foot ball</item>
+        <item>Hockey</item>
+        <item>Tennis</item>
+        <item>Cricket</item>
+        <item>Snooker</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+</resources>
