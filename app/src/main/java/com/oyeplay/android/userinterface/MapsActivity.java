@@ -99,6 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Override
                 public void onInfoWindowClick(Marker marker) {
                     Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
+                    intent.putExtra("name", clubDetails.getName());
                     startActivity(intent);
                 }
             });

@@ -61,7 +61,7 @@
         <activity
             android:name=".userinterface.DashboardActivity"
             android:label="@string/title_activity_dashboard"
-            android:parentActivityName=".userinterface.MapsActivity"
+            android:parentActivityName=".userinterface.ClublistActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

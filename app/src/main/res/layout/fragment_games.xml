@@ -1,13 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.oyeplay.android.dashboardfragment.GamesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ExpandableListView
+        android:id="@+id/expandableListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="362dp"
+        android:background="@color/white"
+        android:dividerHeight="1px"
+        android:divider="@color/divider"
+        android:scrollbars="none"
+        android:layout_gravity="start|top"
+        android:layout_weight="0.92" />
 
-</FrameLayout>
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="New Button"-->
+        <!--android:id="@+id/button2"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
+</LinearLayout>

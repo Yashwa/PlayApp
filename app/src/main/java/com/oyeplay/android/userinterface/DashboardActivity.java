@@ -20,6 +20,7 @@ import com.oyeplay.android.dashboardfragment.GamesFragment;
 
 public class DashboardActivity extends AppCompatActivity {
 
+    String gameName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,13 @@ public class DashboardActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle!=null) {
+            gameName = bundle.getString("name");
+            getSupportActionBar().setTitle(gameName);
+        }
+
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.htab_viewpager);

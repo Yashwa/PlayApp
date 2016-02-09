@@ -7,8 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 
 import com.oyeplay.android.R;
+import com.oyeplay.android.adapter.ExpandableAdapter;
+import com.oyeplay.android.bean.BeanChild;
+import com.oyeplay.android.bean.BeanGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,20 +40,13 @@ public class GamesFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GamesFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
-    public static GamesFragment newInstance(String param1, String param2) {
+    public static GamesFragment newInstance(String param1){//, String param2) {
         GamesFragment fragment = new GamesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,15 +56,26 @@ public class GamesFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_games, container, false);
+        rootView = inflater.inflate(R.layout.fragment_games, container, false);
+        ExpandableListView expandableListView = (ExpandableListView) rootView.findViewById(R.id.expandableListView);
+        ArrayList<BeanGroup> groupArrayList;
+        ExpandableAdapter menuAdapter;
+
+        groupArrayList = SetStandardGroups();
+        menuAdapter = new ExpandableAdapter(getActivity(), groupArrayList);
+        expandableListView.setAdapter(menuAdapter);
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -75,33 +85,34 @@ public class GamesFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
+    public ArrayList<BeanGroup> SetStandardGroups() {
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+        String group_names[] = {"Offers", "Description", "Amenities", "Guidelines to use playground", "Rate Card",
+                "Reviews"};
+
+
+        String cateogry_names[] = {"20% OFF on weekdays"};
+
+
+        ArrayList<BeanGroup> list = new ArrayList<BeanGroup>();
+        ArrayList<BeanChild> ch_list;
+        int i = 0;
+        int j = 0;
+        for (i = 0; i < group_names.length; i++) {
+            BeanGroup gru = new BeanGroup();
+            gru.setName((group_names[i]));
+            ch_list = new ArrayList<BeanChild>();
+            for (j = 0; j < cateogry_names.length; j++) {
+                BeanChild ch = new BeanChild();
+                ch.setName(cateogry_names[j]);
+                ch_list.add(ch);
+            }
+            gru.setItems(ch_list);
+            list.add(gru);
+        }
+
+        return list;
+    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
