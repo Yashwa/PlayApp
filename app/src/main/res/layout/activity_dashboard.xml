@@ -49,8 +49,8 @@
         app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorHeight="3dp"
         app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/white">
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/text">
 
     </android.support.design.widget.TabLayout>
 
