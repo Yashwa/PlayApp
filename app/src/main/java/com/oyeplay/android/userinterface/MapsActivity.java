@@ -98,7 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                 @Override
                 public void onInfoWindowClick(Marker marker) {
-                    Intent intent = new Intent(getBaseContext(), ClublistActivity.class);
+                    Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
                     startActivity(intent);
                 }
             });
