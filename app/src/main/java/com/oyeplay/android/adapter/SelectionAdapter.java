@@ -7,14 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oyeplay.android.R;
-import com.oyeplay.android.bean.BeanSelection;
+import com.oyeplay.android.bean.BeanSports;
 
 import java.util.ArrayList;
 
@@ -23,13 +22,13 @@ import java.util.ArrayList;
  */
 public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.RecyclerViewHolderMy> {
     // Recyclerview will extend to recycler view adapter
-    public ArrayList<BeanSelection> arrayList;
+    public ArrayList<BeanSports> arrayList;
     private Context context;
     public ArrayList<Integer> selectedItems = new ArrayList<>();
     private MyClickListener myClickListener;
     RecyclerViewHolderMy mainHolder;
 
-    public SelectionAdapter(Context context, ArrayList<BeanSelection> arrayList) {
+    public SelectionAdapter(Context context, ArrayList<BeanSports> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -46,7 +45,7 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Recy
 
     @Override
     public void onBindViewHolder(RecyclerViewHolderMy holder, int position) {
-        final BeanSelection model = arrayList.get(position);
+        final BeanSports model = arrayList.get(position);
         mainHolder = holder;
 
         // This will convert drawbale image into bitmap

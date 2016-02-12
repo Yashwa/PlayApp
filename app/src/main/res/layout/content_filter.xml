@@ -18,12 +18,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distance"
+        android:text="City"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/colorPrimary" />
 
     <Spinner
-        android:id="@+id/spinner_distance"
+        android:id="@+id/spinner_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -44,22 +44,25 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPostalAddress"
+        android:singleLine="false"
+        android:scrollHorizontally="false"
+        android:editable="false"
         android:textColorHint="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Type of Sport"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimary" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="24dp"-->
+        <!--android:text="Type of Sport"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:textColor="@color/colorPrimary" />-->
 
-    <Spinner
-        android:id="@+id/spinner_sportType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:entries="@array/spinner_typeOfSport" />
+    <!--<Spinner-->
+        <!--android:id="@+id/spinner_sportType"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+        <!--android:entries="@array/spinner_typeOfSport" />-->
 
 </LinearLayout>

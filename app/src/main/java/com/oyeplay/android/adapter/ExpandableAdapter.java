@@ -1,6 +1,7 @@
 package com.oyeplay.android.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanChild;
 import com.oyeplay.android.bean.BeanGroup;
+import com.oyeplay.android.utility.MajorUtils;
 
 import java.util.ArrayList;
 
@@ -47,7 +49,8 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.menu_child, null);
         }
         TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
-        tv.setText(child.getName().toString());
+        MajorUtils.logit("html",child.getName().toString());
+        tv.setText(Html.fromHtml(child.getName().toString()));
 //        TextView p1 = (TextView) convertView.findViewById(R.id.textView_price);
 //        p1.setText(child.getPrice().toString());
 //        TextView qt = (TextView) convertView.findViewById(R.id.textView_quantity);

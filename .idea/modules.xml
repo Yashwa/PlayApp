@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/OyePlay.iml" filepath="$PROJECT_DIR$/OyePlay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PlayApp.iml" filepath="$PROJECT_DIR$/.idea/PlayApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

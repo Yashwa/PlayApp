@@ -3,14 +3,14 @@ package com.oyeplay.android.bean;
 /**
  * Created by Yashwanth on 2/6/2016.
  */
-public class BeanSelection {
+public class BeanSports {
 
     private String title;
     private int image;
     private int id;
     private boolean isSelected;
 
-    public BeanSelection(String title, int image, int id) {
+    public BeanSports(String title, int image, int id) {
         this.title = title;
         this.image = image;
         this.id = id;
@@ -50,7 +50,7 @@ public class BeanSelection {
 
     @Override
     public String toString() {
-        return "BeanSelection{" +
+        return "BeanSports{" +
                 "title='" + title + '\'' +
                 ", image=" + image +
                 ", id=" + id +

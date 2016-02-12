@@ -1,13 +1,9 @@
 package com.oyeplay.android.userinterface;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,8 +14,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.oyeplay.android.R;
-import com.oyeplay.android.adapter.ClubListAdapter;
 import com.oyeplay.android.bean.BeanClubDetails;
+import com.oyeplay.android.bean.BeanGrounds;
 
 import java.util.ArrayList;
 
@@ -98,6 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                 @Override
                 public void onInfoWindowClick(Marker marker) {
+
                     Intent intent = new Intent(getBaseContext(), DashboardActivity.class);
                     intent.putExtra("name", clubDetails.getName());
                     startActivity(intent);
@@ -106,5 +103,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return view;
         }
 
+    }
+
+    public void setupdata(BeanGrounds grounds){
+
+
+        for(int i = 0; i < grounds.getData().getRs().size(); i++) {
+            final com.oyeplay.android.bean.R ground = grounds.getData().getRs().get(i);
+            LatLng sydney = new LatLng(Double.valueOf(ground.getLa()),Double.valueOf(ground.getLo()));
+            mMap.addMarker(new MarkerOptions().position(sydney).title(ground.getCin()));
+
+            mMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+        }
     }
 }

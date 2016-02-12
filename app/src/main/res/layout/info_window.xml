@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -11,22 +11,22 @@
         android:minWidth="250dp"
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
         android:src="@drawable/img_club_fb" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_vertical_margin"
+
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="STR Sports club bangalore"
+        android:layout_gravity="center_horizontal"
         android:textColor="@color/wallet_dim_foreground_inverse_holo_dark"
         android:id="@+id/textView_name" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:text="HSR layout | 5km"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/textView_address" />
 </LinearLayout>
