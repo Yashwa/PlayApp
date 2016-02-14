@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.oyeplay.android.R;
+import com.oyeplay.android.userinterface.ReviewsActivity;
 import com.oyeplay.android.userinterface.SelectionActivity;
 
 /**
@@ -100,6 +101,9 @@ public class Fragment_Search extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.rel_adventuresports:
+                Intent intent = new Intent(getActivity(), ReviewsActivity.class);
+                launch(intent);
+
                 break;
 
             case R.id.rel_events:
