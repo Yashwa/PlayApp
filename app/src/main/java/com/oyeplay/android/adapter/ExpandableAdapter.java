@@ -1,25 +1,19 @@
 package com.oyeplay.android.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanAmenities;
 import com.oyeplay.android.bean.BeanChild;
 import com.oyeplay.android.bean.BeanGroup;
-import com.oyeplay.android.bean.BeanSports;
-import com.oyeplay.android.userinterface.ReviewsActivity;
-import com.oyeplay.android.utility.MajorUtils;
 
 import java.util.ArrayList;
 
@@ -52,11 +46,12 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         BeanChild child = (BeanChild) getChild(groupPosition, childPosition);
+        LayoutInflater infalInflater = (LayoutInflater) context
+                .getSystemService(context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
 
-            if (groupPosition == 2) {
-                LayoutInflater infalInflater = (LayoutInflater) context
-                        .getSystemService(context.LAYOUT_INFLATER_SERVICE);
+           // if (groupPosition == 2) {
+
 
                 convertView = infalInflater.inflate(R.layout.content_aminities, null);
 
@@ -71,21 +66,20 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
                 amenities.add(new BeanAmenities("Washroom"));
 
                 AmenitiesAdapter adapter = new AmenitiesAdapter(context, amenities);
-                amenities = adapter.arrayList;
+
                 recyclerView.setAdapter(adapter);// set adapter on recyclerview
                 adapter.notifyDataSetChanged();// Notify the adapter
 
-                
-            } else {
-                LayoutInflater infalInflater = (LayoutInflater) context
-                        .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.menu_child, null);
-
-                TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
-                MajorUtils.logit("html", child.getName().toString());
-                tv.setText(Html.fromHtml(child.getName().toString()));
-
-            }
+//
+//            } else {
+//
+//                convertView = infalInflater.inflate(R.layout.menu_child, null);
+//
+//                TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
+//                MajorUtils.logit("html", child.getName().toString());
+//                tv.setText(Html.fromHtml(child.getName().toString()));
+//
+//            }
 
         }
 //        TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
