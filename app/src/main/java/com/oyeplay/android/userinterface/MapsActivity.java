@@ -56,16 +56,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        LatLng sydney = null;
         // Add a marker in Sydney and move the camera
         for(int i = 0; i < mClubArrayList.size(); i++) {
-            LatLng sydney = new LatLng(mClubArrayList.get(i).getLat(), mClubArrayList.get(i).getLng());
+            sydney = new LatLng(mClubArrayList.get(i).getLat(), mClubArrayList.get(i).getLng());
             mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             beanClubDetails = mClubArrayList.get(i);
             System.out.println(beanClubDetails);
             mMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
         }
-        LatLng sydney = new LatLng(mClubArrayList.get(1).getLat(), mClubArrayList.get(1).getLng());
+//        LatLng sydney = new LatLng(mClubArrayList.get(1).getLat(), mClubArrayList.get(1).getLng());
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 

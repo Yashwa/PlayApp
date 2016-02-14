@@ -138,6 +138,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.oyeplay.android.userinterface.ProfessionalsActivity" />
         </activity>
+        <activity
+            android:name=".userinterface.DummyActivity"
+            android:label="@string/title_activity_dummy"
+            android:parentActivityName=".main.Home"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.oyeplay.android.main.Home" />
+        </activity>
     </application>
 
 </manifest>

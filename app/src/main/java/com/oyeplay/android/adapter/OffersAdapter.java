@@ -48,7 +48,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.RecyclerVi
         mainHolder.offer.setText(reviews.getOffer());
         mainHolder.originalPrice.setText(reviews.getOriginalPrice());
         mainHolder.offerPrice.setText(reviews.getOfferPrice());
-        mainHolder.noOfTickets.setText(reviews.getNoOfTickets());
+        mainHolder.noOfTickets.setText(String.valueOf(reviews.getNoOfTickets()));
     }
 
 
@@ -75,6 +75,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.RecyclerVi
     public class RecyclerViewHolderMy extends RecyclerView.ViewHolder implements View.OnClickListener {  //, CompoundButton.OnCheckedChangeListener {
         // View holder for gridview recycler view as we used in listview
         public TextView heading, timestamp, offer, originalPrice, offerPrice, noOfTickets;
+        ImageView img_minus, img_plus;
 
         public RecyclerViewHolderMy(View view) {
             super(view);
@@ -82,10 +83,12 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.RecyclerVi
             view.setOnClickListener(this);
             this.heading = (TextView) view.findViewById(R.id.textView_offer_heading);
             this.offer = (TextView) view.findViewById(R.id.textView_offer);
-            this.timestamp = (TextView) view.findViewById(R.id.textView_timestamp);
+            this.timestamp = (TextView) view.findViewById(R.id.date);
             this.originalPrice = (TextView) view.findViewById(R.id.original_price);
             this.offerPrice = (TextView) view.findViewById(R.id.offer_price);
             this.noOfTickets = (TextView) view.findViewById(R.id.tickets);
+            this.img_minus = (ImageView) view.findViewById(R.id.img_minus);
+            this.img_plus = (ImageView) view.findViewById(R.id.img_plus);
         }
 
         @Override

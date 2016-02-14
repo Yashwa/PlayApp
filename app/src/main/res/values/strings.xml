@@ -45,6 +45,7 @@
     <string name="title_activity_write_review">WriteReviewActivity</string>
     <string name="title_activity_professionals">ProfessionalsActivity</string>
     <string name="title_activity_pro_profile">ProProfileActivity</string>
+    <string name="title_activity_dummy">DummyActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

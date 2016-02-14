@@ -25,7 +25,6 @@ public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.Recy
     // Recyclerview will extend to recycler view adapter
     public ArrayList<BeanAmenities> arrayList;
     private Context context;
-    public ArrayList<Integer> selectedItems = new ArrayList<>();
     private MyClickListener myClickListener;
     RecyclerViewHolderMy mainHolder;
 
@@ -49,15 +48,12 @@ public class AmenitiesAdapter extends RecyclerView.Adapter<AmenitiesAdapter.Recy
         final BeanAmenities model = arrayList.get(position);
         mainHolder = holder;
 
+        System.out.println(arrayList);
+        System.out.println(arrayList.size());
+
         // setting title
         mainHolder.title.setText(model.getName());
 
-    }
-
-    public ArrayList<Integer> selectedItems() {
-        ArrayList<Integer> selectedItems;
-        selectedItems = this.selectedItems;
-        return selectedItems;
     }
 
     @Override
