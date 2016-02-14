@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanGrounds;
 import com.oyeplay.android.userinterface.DashboardActivity;
+import com.oyeplay.android.utility.MajorUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -67,17 +68,20 @@ public class ClubListAdapter extends RecyclerView.Adapter<ClubListAdapter.Recycl
 
 
         if (ground.getIs() != null) {
+
+
             List list = (List) ground.getIs();
+            MajorUtils.logit(MajorUtils.replace(" ", list.get(0).toString(), "%20"));
             Picasso.with(context)
-                    .load(list.get(0).toString())
+                    .load(MajorUtils.replace(" ", list.get(0).toString(), "%20"))
                     .error(R.drawable.img_club_fb)
 
                     .placeholder(R.drawable.ic_launcher)
                     .into(holder.imageview_banner);
         }
-
+        MajorUtils.logit(MajorUtils.encode(ground.getDu()));
         Picasso.with(context)
-                .load(ground.getDu())
+                .load(MajorUtils.replace(" ",ground.getDu(),"%20"))
                 .error(R.drawable.img_club_fb)
 
                 .placeholder(R.drawable.ic_launcher)

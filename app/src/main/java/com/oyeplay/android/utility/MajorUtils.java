@@ -19,6 +19,13 @@ public class MajorUtils {
     public static void logit(String tag, String msg) {
         Log.d(tag, msg);
     }
+    public static void logit( String msg) {
+        Log.d("Data Log", msg);
+    }
+public static String replace(String pattern,String data,String value){
+    return data.replace(pattern,value);
+}
+
 
     public static String encode(String s ){
         try {

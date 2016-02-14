@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -168,7 +167,7 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
         final Gson gson = new Gson();
         JSONArray sportsarray = new JSONArray(Arrays.asList(TITLES));
         MajorUtils.logit("response_clubcount", sportsarray.toString());
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, Api.getclubcount, sportsarray.toString(), new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest( String .format(Api.getclubcount,"Bangalore"), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 MajorUtils.logit("response_clubcount", response.toString());
