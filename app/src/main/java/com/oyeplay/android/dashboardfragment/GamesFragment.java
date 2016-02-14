@@ -1,5 +1,6 @@
 package com.oyeplay.android.dashboardfragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import com.oyeplay.android.R;
 import com.oyeplay.android.adapter.ExpandableAdapter;
 import com.oyeplay.android.bean.BeanChild;
 import com.oyeplay.android.bean.BeanGroup;
+import com.oyeplay.android.userinterface.ReviewsActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,6 +89,19 @@ public class GamesFragment extends Fragment {
             e.printStackTrace();
         }
 
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                if(groupPosition == 5){
+                    Intent intent = new Intent(getContext(), ReviewsActivity.class);
+                    getContext().startActivity(intent);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
         return rootView;
     }
 
@@ -107,7 +122,10 @@ public class GamesFragment extends Fragment {
                 "Reviews"};
 
 
-        String cateogry_names[] = {validatedata(sportdata.getString("offers"), "No offers right now"), validatedata(sportdata.getString("de"),jsonObject.getJSONObject("data").getString("title")), getfacilities(sportdata.getString("facilities")), "", "", ""};
+        String cateogry_names[] = {validatedata(sportdata.getString("offers"), "No offers right now"),
+                validatedata(sportdata.getString("de"),jsonObject.getJSONObject("data").getString("title")),
+                getfacilities(sportdata.getString("facilities")),
+                "", "", ""};
 
 
         ArrayList<BeanGroup> list = new ArrayList<BeanGroup>();

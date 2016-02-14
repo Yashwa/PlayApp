@@ -1,16 +1,20 @@
 package com.oyeplay.android.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanChild;
 import com.oyeplay.android.bean.BeanGroup;
+import com.oyeplay.android.userinterface.ReviewsActivity;
 import com.oyeplay.android.utility.MajorUtils;
 
 import java.util.ArrayList;
@@ -49,12 +53,8 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.menu_child, null);
         }
         TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
-        MajorUtils.logit("html",child.getName().toString());
+        MajorUtils.logit("html", child.getName().toString());
         tv.setText(Html.fromHtml(child.getName().toString()));
-//        TextView p1 = (TextView) convertView.findViewById(R.id.textView_price);
-//        p1.setText(child.getPrice().toString());
-//        TextView qt = (TextView) convertView.findViewById(R.id.textView_quantity);
-//        qt.setText(child.getQuantity().toString());
 
         return convertView;
     }
@@ -91,12 +91,17 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
             LayoutInflater inf = (LayoutInflater) context
                     .getSystemService(context.LAYOUT_INFLATER_SERVICE);
             convertView = inf.inflate(R.layout.menu_header, null);
-
         }
-        TextView tv = (TextView) convertView.findViewById(R.id.textView_header);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.arrow);
+
+        if (isExpanded) {
+            imageView.setImageResource(R.drawable.ic_chevron_down);
+        } else {
+            imageView.setImageResource(R.drawable.ic_chevron_right);
+        }
+
+        final TextView tv = (TextView) convertView.findViewById(R.id.textView_header);
         tv.setText(group.getName());
-
-
         return convertView;
     }
 
