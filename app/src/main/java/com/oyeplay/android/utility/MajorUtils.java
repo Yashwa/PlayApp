@@ -13,37 +13,40 @@ import java.net.URLEncoder;
  */
 public class MajorUtils {
 
-    public static void toastit(String msg,Context context) {
+    public static void toastit(String msg, Context context) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT);
     }
+
     public static void logit(String tag, String msg) {
         Log.d(tag, msg);
     }
-    public static void logit( String msg) {
+
+    public static void logit(String msg) {
         Log.d("Data Log", msg);
     }
-public static String replace(String pattern,String data,String value){
-    return data.replace(pattern,value);
-}
+
+    public static String replace(String pattern, String data, String value) {
+        return data.replace(pattern, value);
+    }
 
 
-    public static String encode(String s ){
+    public static String encode(String s) {
         try {
             return URLEncoder.encode(s, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            return  null;
+            return null;
         }
 
 
     }
 
-    public static String decode(String s){
+    public static String decode(String s) {
         try {
             return URLDecoder.decode(s, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-            return  null;
+            return null;
         }
     }
 

@@ -120,6 +120,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.oyeplay.android.userinterface.ReviewsActivity" />
         </activity>
+        <activity
+            android:name=".userinterface.ProfessionalsActivity"
+            android:label="@string/title_activity_professionals"
+            android:parentActivityName=".main.Home"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.oyeplay.android.main.Home" />
+        </activity>
+        <activity
+            android:name=".userinterface.ProProfileActivity"
+            android:label="@string/title_activity_pro_profile"
+            android:parentActivityName=".userinterface.ProfessionalsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.oyeplay.android.userinterface.ProfessionalsActivity" />
+        </activity>
     </application>
 
 </manifest>
