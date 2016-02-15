@@ -56,21 +56,21 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Recy
         mainHolder.title1.setText(model.getTitle());
         mainHolder.id.setText(String.valueOf("(" + model.getId()) + ")");
         mainHolder.imageview.setImageBitmap(image);
-        mainHolder.imageview.setTag(position);
-        mainHolder.relativeLayout.setTag(position);
+//        mainHolder.imageview.setTag(position);
+//        mainHolder.relativeLayout.setTag(position);
 
 
-        mainHolder.imageview.setOnClickListener(new com.oyeplay.android.utility.MyClickListener
-                ((RecyclerView.ViewHolder) mainHolder, position) {
-            @Override
-            public void onClick(View v) {
-                // Add code to redirect the group profile page (activity)and also pass the useful parameter to other other activity
-//                mainHolder.relativeLayout.findViewWithTag(position).setVisibility(View.VISIBLE);
-                System.out.println(mainHolder.relativeLayout.getTag());
-                Toast.makeText(context, String.valueOf(position), Toast.LENGTH_LONG).show();
-
-            }
-        });
+//        mainHolder.imageview.setOnClickListener(new com.oyeplay.android.utility.MyClickListener
+//                ((RecyclerView.ViewHolder) mainHolder, position) {
+//            @Override
+//            public void onClick(View v) {
+//                // Add code to redirect the group profile page (activity)and also pass the useful parameter to other other activity
+////                mainHolder.relativeLayout.findViewWithTag(position).setVisibility(View.VISIBLE);
+////                System.out.println(mainHolder.relativeLayout.getTag());
+//                Toast.makeText(context, String.valueOf(position), Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
     }
 
     public ArrayList<Integer> selectedItems() {
@@ -103,25 +103,32 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Recy
         // View holder for gridview recycler view as we used in listview
         public TextView title, title1, id;
         public ImageView imageview;
-        public RelativeLayout relativeLayout;
+        public RelativeLayout relativeLayout, relativeLayout_onclick;
 
         public RecyclerViewHolderMy(View view) {
             super(view);
             // Find all views ids
             view.setOnClickListener(this);
 
+            this.relativeLayout_onclick = (RelativeLayout) view.findViewById(R.id.card_view);
             this.relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayout);
             this.title = (TextView) view.findViewById(R.id.textView_item_title);
             this.title1 = (TextView) view.findViewById(R.id.textView_item_title1);
             this.imageview = (ImageView) view.findViewById(R.id.imageView_interest);
             this.id = (TextView) view.findViewById(R.id.textView_item_id);
 
+            relativeLayout_onclick.setOnClickListener(this);
+            imageview.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (myClickListener != null) {
-                myClickListener.myItemClicked(view, getAdapterPosition(), relativeLayout);
+            switch (view.getId()) {
+                case R.id.imageView_interest:
+                    if (myClickListener != null) {
+                        myClickListener.myItemClicked(view, getAdapterPosition(), relativeLayout);
+                    }
+                    break;
             }
         }
     }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -78,7 +79,6 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
         getSupportActionBar().setTitle("Select a Sport");
 
 
-
         initiate();
     }
 
@@ -100,15 +100,15 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
 
     @Override
     public void myItemClicked(View view, int position, RelativeLayout relativeLayout) {
-        // relativeLayout.setVisibility(View.VISIBLE);
-        relativeLayout.findViewWithTag(position).setVisibility(View.VISIBLE);
+         relativeLayout.setVisibility(View.VISIBLE);
+//        switch (view.getId()) {
+//            case R.id.relativeLayout:
+//                relativeLayout.findViewWithTag(position).setVisibility(View.VISIBLE);
+                checkgps(position);
 
-        checkgps(position);
-
-
-
-
-        Toast.makeText(SelectionActivity.this, String.valueOf(position), Toast.LENGTH_LONG).show();
+//                Toast.makeText(SelectionActivity.this, String.valueOf("y " + position), Toast.LENGTH_LONG).show();
+//                break;
+//        }
     }
 
 
@@ -162,12 +162,11 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
     }
 
 
-
     public void getsportcount() {
         final Gson gson = new Gson();
         JSONArray sportsarray = new JSONArray(Arrays.asList(TITLES));
         MajorUtils.logit("response_clubcount", sportsarray.toString());
-        JsonObjectRequest request = new JsonObjectRequest( String .format(Api.getclubcount,"Bangalore"), null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(String.format(Api.getclubcount, "Bangalore"), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 MajorUtils.logit("response_clubcount", response.toString());
@@ -206,7 +205,7 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
 
     }
 
-    public void checkgps(final int pos){
+    public void checkgps(final int pos) {
         if (!SmartLocation.with(context).location().state().locationServicesEnabled()) {
             new MaterialDialog.Builder(this)
                     .title("GPS required")
@@ -236,10 +235,11 @@ public class SelectionActivity extends AppCompatActivity implements SelectionAda
             startActivity(intent);
         }
     }
+
     public void initiate() {
         initViews();
-            getcities();
-            getsportcount();
+        getcities();
+        getsportcount();
 
     }
 
