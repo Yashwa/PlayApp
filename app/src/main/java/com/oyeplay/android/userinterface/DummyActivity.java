@@ -6,12 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.oyeplay.android.R;
-import com.oyeplay.android.adapter.AmenitiesAdapter;
 import com.oyeplay.android.adapter.OffersAdapter;
 import com.oyeplay.android.bean.BeanAmenities;
 import com.oyeplay.android.bean.BeanOffers;
@@ -38,10 +36,11 @@ public class DummyActivity extends AppCompatActivity {
             }
         });
 
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
+//
+//
 //        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView_dummy);
 //        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 //
@@ -56,7 +55,7 @@ public class DummyActivity extends AppCompatActivity {
 //        amenities = adapter.arrayList;
 //        recyclerView.setAdapter(adapter);// set adapter on recyclerview
 //        adapter.notifyDataSetChanged();// Notify the adapter
-
+//
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView_dummy);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.oyeplay.android.R;
 import com.oyeplay.android.adapter.ExpandableAdapter;
@@ -38,6 +39,8 @@ public class GamesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView address,rating;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,12 +78,17 @@ public class GamesFragment extends Fragment {
         ExpandableListView expandableListView = (ExpandableListView) rootView.findViewById(R.id.expandableListView);
         ArrayList<BeanGroup> groupArrayList;
         ExpandableAdapter menuAdapter;
+        address = (TextView) rootView.findViewById(R.id.textView_address);
+        rating = (TextView) rootView.findViewById(R.id.textview_averagerating);
+
         String json = getArguments().getString("json");
         String selection = getArguments().getString("selection");
         try {
             JSONObject mjson = new JSONObject(json);
 
-            groupArrayList = SetStandardGroups(mjson, selection);
+
+
+            groupArrayList = Inflatedata(mjson, selection);
 
             menuAdapter = new ExpandableAdapter(getActivity(), groupArrayList);
             expandableListView.setAdapter(menuAdapter);
@@ -112,20 +120,37 @@ public class GamesFragment extends Fragment {
         }
     }
 
-    public ArrayList<BeanGroup> SetStandardGroups(JSONObject jsonObject, String selection) throws JSONException {
+    public ArrayList<BeanGroup> Inflatedata(JSONObject jsonObject, String selection) throws JSONException {
+        address.setText(jsonObject.getJSONObject("data").getString("ad"));
+
+        if (!jsonObject.getJSONObject("data").isNull("ar")){
+            rating.setText(String.valueOf(jsonObject.getJSONObject("data").getString("ar")));
+        }else{
+            rating.setText("0.0");
+        }
 
 
         JSONObject sportdata = jsonObject.getJSONObject("data").getJSONObject("cbg").getJSONObject(selection);
 
-
+//with offers
         String group_names[] = {"Offers", "Description", "Amenities", "Guidelines to use playground", "Rate Card",
                 "Reviews"};
 
 
         String cateogry_names[] = {validatedata(sportdata.getString("offers"), "No offers right now"),
                 validatedata(sportdata.getString("de"),jsonObject.getJSONObject("data").getString("title")),
-                getfacilities(sportdata.getString("facilities")),
-                "", "", ""};
+                 sportdata.getString("facilities"),
+                getfacilities(sportdata.getString("rl")), "", ""};
+
+        //Without offers
+//        String group_names[] = { "Description", "Amenities", "Guidelines to use playground", "Rate Card",
+//                "Reviews"};
+//
+//
+//        String cateogry_names[] = {
+//                validatedata(sportdata.getString("de"),jsonObject.getJSONObject("data").getString("title")),
+//                getfacilities(sportdata.getString("rl")),
+//                "", "", ""};
 
 
         ArrayList<BeanGroup> list = new ArrayList<BeanGroup>();
@@ -165,7 +190,7 @@ public class GamesFragment extends Fragment {
         JSONArray jsonArray = new JSONArray(g);
         for (int i = 0; i < jsonArray.length(); i++) {
 
-            value = value + String.valueOf(i) + "." + jsonArray.get(i)+"<br /><br />";
+            value = value + String.valueOf(i+1) + ". <b>" + jsonArray.get(i)+"</b><br />";
 
         }
         return value;

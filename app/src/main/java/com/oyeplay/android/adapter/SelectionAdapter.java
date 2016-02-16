@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanSports;
@@ -56,21 +55,7 @@ public class SelectionAdapter extends RecyclerView.Adapter<SelectionAdapter.Recy
         mainHolder.title1.setText(model.getTitle());
         mainHolder.id.setText(String.valueOf("(" + model.getId()) + ")");
         mainHolder.imageview.setImageBitmap(image);
-//        mainHolder.imageview.setTag(position);
-//        mainHolder.relativeLayout.setTag(position);
 
-
-//        mainHolder.imageview.setOnClickListener(new com.oyeplay.android.utility.MyClickListener
-//                ((RecyclerView.ViewHolder) mainHolder, position) {
-//            @Override
-//            public void onClick(View v) {
-//                // Add code to redirect the group profile page (activity)and also pass the useful parameter to other other activity
-////                mainHolder.relativeLayout.findViewWithTag(position).setVisibility(View.VISIBLE);
-////                System.out.println(mainHolder.relativeLayout.getTag());
-//                Toast.makeText(context, String.valueOf(position), Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
     }
 
     public ArrayList<Integer> selectedItems() {

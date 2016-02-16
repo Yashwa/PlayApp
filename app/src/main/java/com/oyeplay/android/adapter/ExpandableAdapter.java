@@ -2,7 +2,7 @@ package com.oyeplay.android.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,11 @@ import com.oyeplay.android.R;
 import com.oyeplay.android.bean.BeanAmenities;
 import com.oyeplay.android.bean.BeanChild;
 import com.oyeplay.android.bean.BeanGroup;
+import com.oyeplay.android.utility.MajorUtils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.solovyev.android.views.llm.LinearLayoutManager;
 
 import java.util.ArrayList;
 
@@ -24,7 +29,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
     private ArrayList<BeanGroup> groups;
     private ArrayList<BeanChild> Items;
     public ArrayList<BeanAmenities> amenities = new ArrayList<>();
-
+boolean isset = false;
     public ExpandableAdapter(Context context, ArrayList<BeanGroup> groups) {
         this.context = context;
         this.groups = groups;
@@ -48,40 +53,68 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
         BeanChild child = (BeanChild) getChild(groupPosition, childPosition);
         LayoutInflater infalInflater = (LayoutInflater) context
                 .getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null) {
-
-           // if (groupPosition == 2) {
 
 
+            MajorUtils.logit("position:"+String.valueOf(groupPosition)+groups.get(groupPosition).getName());
+
+            if (groups.get(groupPosition).getName().equals("Amenities")) {
                 convertView = infalInflater.inflate(R.layout.content_aminities, null);
 
-                RecyclerView recyclerView = (RecyclerView) convertView.findViewById(R.id.recyclerView_amenities);
-                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-                amenities.add(new BeanAmenities("Washroom"));
-                amenities.add(new BeanAmenities("Washroom"));
-                amenities.add(new BeanAmenities("Washroom"));
-                amenities.add(new BeanAmenities("Washroom"));
-                amenities.add(new BeanAmenities("Washroom"));
-                amenities.add(new BeanAmenities("Washroom"));
 
-                AmenitiesAdapter adapter = new AmenitiesAdapter(context, amenities);
+                MajorUtils.logit("position" + "groups.get(groupPosition).getName()");
 
-                recyclerView.setAdapter(adapter);// set adapter on recyclerview
-                adapter.notifyDataSetChanged();// Notify the adapter
 
-//
-//            } else {
-//
-//                convertView = infalInflater.inflate(R.layout.menu_child, null);
-//
-//                TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
-//                MajorUtils.logit("html", child.getName().toString());
-//                tv.setText(Html.fromHtml(child.getName().toString()));
-//
-//            }
+                try {
+                    JSONArray facilitiesArray = new JSONArray(child.getName());
 
-        }
+
+                    for (int i =0; i<facilitiesArray.length();i++){
+;
+                        amenities.add(new BeanAmenities( facilitiesArray.get(i).toString()));
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                   RecyclerView recyclerView = (RecyclerView) convertView.findViewById(R.id.recyclerView_amenities);
+
+
+//                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
+                   recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+
+
+
+
+                   AmenitiesAdapter adapter = new AmenitiesAdapter(context, amenities);
+                adapter.arrayList=amenities;
+                   recyclerView.setAdapter(adapter);// set adapter on recyclerview
+
+
+                   adapter.notifyDataSetChanged();
+
+                // Notify the adapter
+
+                isset= true;
+
+
+            } else {
+
+                convertView = infalInflater.inflate(R.layout.menu_child, null);
+
+                TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
+                MajorUtils.logit("html", child.getName().toString());
+                tv.setText(Html.fromHtml(child.getName().toString()));
+
+            }
+
+
 //        TextView tv = (TextView) convertView.findViewById(R.id.textView_name);
 //        MajorUtils.logit("html", child.getName().toString());
 //        tv.setText(Html.fromHtml(child.getName().toString()));
